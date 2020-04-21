@@ -42,16 +42,34 @@ function calculateAll() {
 
 // ITERATION 4
 
+const $action = document.getElementsByClassName('action');
+
+
 function removeProduct(event) {
-  const target = event.currentTarget;
-  console.log('The target in remove is:', target);
-  //... your code goes here
+  //actual btn
+  const $target = event.currentTarget;
 
-  const listProducts = target.parentNode;
-  const orderedProductList = listProducts.parentNode;
+  //path to the td
+  const $tdOfButton = $target.parentNode
 
-  orderedProductList.removeChild(listProducts);
+  //path to the tr
+  const $trOfTdOfButton = $tdOfButton.parentNode 
+
+  // path to the tbody
+  const $tbodytrOfTdOfButton = $trOfTdOfButton.parentNode 
+
+  // remove the entire tr!
+  $tbodytrOfTdOfButton.removeChild($tbodytrOfTdOfButton); 
+
+  console.log('The target in remove is:', $target);
+  
 }
+
+const $btnRemove = document.querySelectorAll(tbodytrOfTdOfButton);
+  
+  for (let removeProduct of $btnRemove){
+    removeProduct.addEventListener('click', removeProduct('.action button'))
+  }
 
 // ITERATION 5
 
