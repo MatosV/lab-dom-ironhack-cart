@@ -1,38 +1,43 @@
 // ITERATION 1
 
 function updateSubtotal(product) {
-  console.log('Calculating subtotal, yey!');
+  console.log("Calculating subtotal, yey!");
 
-  // Unit Price
-  const price = product.querySelector('.price span').innerHTML;
+  //price
+  const $price = product.querySelector(".price span");
+  const priceValue = Number($price.innerText);
 
-  // Quantity that user gives
-  const quantity = product.querySelector('.quantity input').value;
+  //quantity
+  const $quantity = product.querySelector(".quantity input");
+  const quantityValue = $quantity.valueAsNumber;
 
-  // Total from the quantity * price
-  let subtotalPrice = quantity * price;
-  console.log(subtotalPrice);
+  const subtotal = priceValue * quantityValue;
 
-  const subtotal = product.querySelector('.subtotal span').innerHTML = subtotalPrice;
+  const $subtotal = product.querySelector(".subtotal span");
+
+  $subtotal.innerText = subtotal;
+
+  return subtotal;
 
 }
+// ITERATION 2
 
 function calculateAll() {
-  // code in the following two lines is added just for testing purposes.
-  // it runs when only iteration 1 is completed. at later point, it can be removed.
-  /*
 
-  const singleProduct = document.querySelector('.product');
-  updateSubtotal(singleProduct);
+  const allProducts = document.querySelectorAll('.product');
 
-  */
-  // end of test
+  let total = 0;
 
-  // ITERATION 2
-  //... your code goes here
+  for (let i=0; i<allProducts.length; i++){ 
+    total += updateSubtotal(allProducts[i]);
+  }
 
   // ITERATION 3
-  //... your code goes here
+
+  const $total = document.querySelector('#total-value span');
+
+  $total.innerText = total;
+
 }
 
 // ITERATION 4
@@ -46,12 +51,6 @@ function removeProduct(event) {
   const orderedProductList = listProducts.parentNode;
 
   orderedProductList.removeChild(listProducts);
-}
-
-const originalProducts = document.querySelectorAll('.action button ');
-
-for (let deleteProducts of originalProducts){
-  deleteProducts.addEventListener('click', removeProduct);
 }
 
 // ITERATION 5
